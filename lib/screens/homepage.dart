@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                         ListTile(
                           leading: CircleAvatar(
                               child: Image.asset(
-                                  "assets/images/sikshyatechnology.jpg")),
+                                  "assets/images/—Pngtree—books logo_4135439.png")),
                           iconColor: Colors.black,
                           title: Text(
                             document['title'],

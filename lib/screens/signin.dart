@@ -138,7 +138,7 @@ class _SigninScreenState extends State<SigninScreen> {
                     children: [
                       SizedBox(
                         child: Image.asset(
-                          "assets/images/sikshyatechnology.jpg",
+                          "assets/images/—Pngtree—books logo_4135439.png",
                           height: MediaQuery.of(context).size.height * 0.2,
                           fit: BoxFit.contain,
                         ),
