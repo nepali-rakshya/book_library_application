@@ -337,7 +337,7 @@ class _SignupScreenState extends State<SignupScreen> {
     userModel.secondName = secondNameEditingController.text;
     // sending rthese values
     await firebaseFirestore
-        .collection("users")
+        .collection("usersId")
         .doc(user.uid)
         .set(userModel.toMap());
     showDialog(
