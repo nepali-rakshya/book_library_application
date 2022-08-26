@@ -1,18 +1,20 @@
+// ignore_for_file: prefer_const_constructors, deprecated_member_use, unnecessary_brace_in_string_interps, avoid_print, unused_field
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 import 'package:intl/intl.dart';
 
-class AddNotes extends StatefulWidget {
+class AddBook extends StatefulWidget {
   String? userId;
 
-  AddNotes({key: Key, required this.userId});
+  AddBook({key: Key, required this.userId});
 
   @override
-  State<AddNotes> createState() => _AddNotesState();
+  State<AddBook> createState() => _AddBookState();
 }
 
-class _AddNotesState extends State<AddNotes> {
+class _AddBookState extends State<AddBook> {
   String? _setTime, _setDate;
 
   String? _hour, _minute, _time;
@@ -78,7 +80,7 @@ class _AddNotesState extends State<AddNotes> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        title: Text('Add Notes',
+        title: Text('Add Book',
             style: TextStyle(color: Colors.black, fontSize: 25.0)),
         leading: GestureDetector(
           onTap: () {
@@ -105,8 +107,8 @@ class _AddNotesState extends State<AddNotes> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    labelText: 'Enter Title',
-                    hintText: 'Enter title of your note........'),
+                    labelText: 'Book title',
+                    hintText: 'Enter title of the book........'),
               ),
               SizedBox(height: 20.0),
               TextField(
@@ -116,8 +118,8 @@ class _AddNotesState extends State<AddNotes> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    labelText: 'Enter Description',
-                    hintText: 'Enter description of your note........'),
+                    labelText: 'Enter Summary',
+                    hintText: 'Enter summary of the book........'),
               ),
               SizedBox(height: 20.0),
               TextField(
@@ -127,24 +129,24 @@ class _AddNotesState extends State<AddNotes> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     labelText: 'Enter Date',
-                    hintText: 'Enter date of your note........'),
+                    hintText: 'Enter date of your book........'),
                 onTap: () {
                   _selectDate(context);
                 },
               ),
-              SizedBox(height: 20.0),
-              TextField(
-                controller: _timeController,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    labelText: 'Enter Time',
-                    hintText: 'Enter time of your note........'),
-                onTap: () {
-                  _selectTime(context);
-                },
-              ),
+              // SizedBox(height: 20.0),
+              // TextField(
+              //   controller: _timeController,
+              //   decoration: InputDecoration(
+              //       border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(10),
+              //       ),
+              //       labelText: 'Enter Time',
+              //       hintText: 'Enter time of your note........'),
+              //   onTap: () {
+              //     _selectTime(context);
+              //   },
+              // ),
               SizedBox(height: 20.0),
               RaisedButton(
                 onPressed: () {
@@ -164,7 +166,7 @@ class _AddNotesState extends State<AddNotes> {
                   getDocumentID();
                   print("================");
                 },
-                child: Text('Add Note'),
+                child: Text('Add Book'),
               ),
             ],
           ),
@@ -175,9 +177,9 @@ class _AddNotesState extends State<AddNotes> {
 
   postNotes(userId, title, description, date, time) {
     FirebaseFirestore.instance
-        .collection('users')
+        .collection('usersId')
         .doc(userId)
-        .collection('notes')
+        .collection('books')
         .add({
       'title': title,
       'description': description,
@@ -190,9 +192,9 @@ class _AddNotesState extends State<AddNotes> {
 
   getDocumentID() {
     FirebaseFirestore.instance
-        .collection('users')
+        .collection('usersId')
         .doc(widget.userId)
-        .collection('notes')
+        .collection('books')
         .get()
         .then((value) {
       value.docs.forEach((element) {

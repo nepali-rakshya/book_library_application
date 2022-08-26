@@ -1,13 +1,12 @@
-// ignore_for_file: prefer_const_constructors, deprecated_member_use, unnecessary_brace_in_string_interps, avoid_print, unused_field
+// ignore_for_file: deprecated_member_use
 
 import 'package:book_application/models/user_model.dart';
-import 'package:book_application/screens/notedescription.dart';
-import 'package:book_application/screens/updateNotes.dart';
+import 'package:book_application/screens/Bookdescription.dart';
+import 'package:book_application/screens/signin.dart';
+import 'package:book_application/screens/updatebook.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:book_application/screens/notedescription.dart';
-import 'package:book_application/screens/updateNotes.dart';
 import '../libraries.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     FirebaseFirestore.instance
-        .collection("users")
+        .collection("usersId")
         .doc(user!.uid)
         .get()
         .then((value) {
@@ -47,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AddNotes(userId: loggedInUser.uid),
+              builder: (context) => AddBook(userId: loggedInUser.uid),
             ),
           );
         },
@@ -80,9 +79,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
-            .collection('users')
+            .collection('usersId')
             .doc(loggedInUser.uid)
-            .collection('notes')
+            .collection('books')
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
@@ -100,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: ((context) {
-                      return NoteDescription(
+                      return BookDescription(
                         userId: loggedInUser.uid!,
                         title: document['title'],
                         description: document['description'],
@@ -145,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                                     onPressed: () {
                                       Navigator.of(context)
                                           .push(MaterialPageRoute(
-                                              builder: (context) => UpdateNotes(
+                                              builder: (context) => Updatebooks(
                                                     userId: loggedInUser.uid,
                                                     noteId: document.id,
                                                     title: document['title'],
@@ -167,9 +166,9 @@ class _HomePageState extends State<HomePage> {
                                     elevation: 3.0,
                                     onPressed: () {
                                       FirebaseFirestore.instance
-                                          .collection('users')
+                                          .collection('usersId')
                                           .doc(loggedInUser.uid)
-                                          .collection('notes')
+                                          .collection('books')
                                           .doc(document.id)
                                           .delete();
                                     },
@@ -193,4 +192,12 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+Future<void> logout(BuildContext context) async {
+  await FirebaseAuth.instance.signOut();
+  Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (BuildContext context) => SigninScreen()),
+      (route) => false);
 }

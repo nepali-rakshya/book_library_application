@@ -1,16 +1,18 @@
+// ignore_for_file: prefer_const_constructors, deprecated_member_use, unnecessary_brace_in_string_interps, avoid_print, unused_field
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 import 'package:intl/intl.dart';
 
-class UpdateNotes extends StatefulWidget {
+class Updatebooks extends StatefulWidget {
   String? userId;
   String? noteId;
   String? title;
   String? description;
   String? createdDate;
   String? createdTime;
-  UpdateNotes({
+  Updatebooks({
     Key? key,
     required this.userId,
     required this.noteId,
@@ -21,10 +23,10 @@ class UpdateNotes extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<UpdateNotes> createState() => _UpdateNotesState();
+  State<Updatebooks> createState() => _UpdatetasksState();
 }
 
-class _UpdateNotesState extends State<UpdateNotes> {
+class _UpdatetasksState extends State<Updatebooks> {
   String? _setTime, _setDate;
 
   String? _hour, _minute, _time;
@@ -91,7 +93,7 @@ class _UpdateNotesState extends State<UpdateNotes> {
         backgroundColor: Colors.white,
         elevation: 0.0,
         title: Text(
-          'Update Notes',
+          'Update Books',
           style: TextStyle(color: Colors.blue, fontSize: 30.0),
         ),
         leading: GestureDetector(
@@ -115,8 +117,8 @@ class _UpdateNotesState extends State<UpdateNotes> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    labelText: 'Title',
-                    hintText: 'Enter title of your note........'),
+                    labelText: 'Book title',
+                    hintText: 'Enter title of the book........'),
               ),
               SizedBox(height: 20.0),
               TextField(
@@ -126,22 +128,22 @@ class _UpdateNotesState extends State<UpdateNotes> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    labelText: 'Enter Description',
-                    hintText: 'Enter description of your note........'),
+                    labelText: 'Enter Summary',
+                    hintText: 'Enter summary of the book........'),
               ),
               SizedBox(height: 20.0),
-              TextField(
-                controller: _dateController,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    labelText: 'Enter Modify Date',
-                    hintText: 'Enter modify date of your note........'),
-                onTap: () {
-                  _selectDate(context);
-                },
-              ),
+              // TextField(
+              // controller: _dateController,
+              // decoration: InputDecoration(
+              //     border: OutlineInputBorder(
+              //       borderRadius: BorderRadius.circular(10),
+              //     ),
+              //     labelText: 'Enter Modify Date',
+              //     hintText: 'Enter modify date of your note........'),
+              // onTap: () {
+              //   _selectDate(context);
+              // },
+              // ),
               SizedBox(height: 20.0),
               TextField(
                 controller: _timeController,
@@ -149,8 +151,8 @@ class _UpdateNotesState extends State<UpdateNotes> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    labelText: 'Enter Modify Time',
-                    hintText: 'Enter modify time of your note........'),
+                    labelText: 'Enter the Updated Time',
+                    hintText: 'Enter the modified time of the book........'),
                 onTap: () {
                   _selectTime(context);
                 },
@@ -166,7 +168,7 @@ class _UpdateNotesState extends State<UpdateNotes> {
                     _timeController.text,
                   );
                 },
-                child: Text('Update Note'),
+                child: Text('Update Book'),
               ),
             ],
           ),
@@ -177,7 +179,7 @@ class _UpdateNotesState extends State<UpdateNotes> {
 
   Future<void> updateUser(title, description, date, time) {
     return FirebaseFirestore.instance
-        .doc('users/${widget.userId}/notes/${widget.noteId}')
+        .doc('usersId/${widget.userId}/books/${widget.noteId}')
         .update({
           'title': title,
           'description': description,
@@ -190,9 +192,9 @@ class _UpdateNotesState extends State<UpdateNotes> {
 
   getDocumentID() {
     FirebaseFirestore.instance
-        .collection('users')
+        .collection('usersId')
         .doc(widget.userId)
-        .collection('notes')
+        .collection('books')
         .get()
         .then((value) {
       value.docs.forEach((element) {

@@ -37,19 +37,18 @@ class _SigninScreenState extends State<SigninScreen> {
     // email field
     final emailField = TextFormField(
       decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.mail),
-          prefixIconColor: Colors.red,
-          contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
-          labelText: "Email",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-          enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                ),
+        prefixIcon: const Icon(Icons.mail),
+        prefixIconColor: Colors.red,
+        contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+        labelText: "Email",
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.0),
+          borderSide: BorderSide(
+            color: Colors.grey,
+            width: 2.0,
+          ),
+        ),
       ),
       autofocus: false,
       controller: emailController,
@@ -71,20 +70,19 @@ class _SigninScreenState extends State<SigninScreen> {
 // password field
     final passwordField = TextFormField(
       decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.vpn_key),
-          prefixIconColor: Colors.red,
-          contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
-          // hintText: "Enter your password",
-          labelText: "Password",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+        prefixIcon: const Icon(Icons.vpn_key),
+        prefixIconColor: Colors.red,
+        contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+        // hintText: "Enter your password",
+        labelText: "Password",
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
         enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                ),
+          borderRadius: BorderRadius.circular(25.0),
+          borderSide: BorderSide(
+            color: Colors.grey,
+            width: 2.0,
+          ),
+        ),
       ),
       autofocus: false,
       controller: passwordController,
@@ -139,76 +137,78 @@ class _SigninScreenState extends State<SigninScreen> {
       },
     );
     return Scaffold(
-      body:Container(
+      body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/bgimg.jpg"),
             fit: BoxFit.cover,
           ),
         ),
-      child:Center(
-        child: SingleChildScrollView(
-          child: Container(
-            child: Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        child: Image.asset(
-                          "assets/images/booklogo.png",
-                          height: MediaQuery.of(context).size.height * 0.25,
-                          fit: BoxFit.contain,
-                        ), 
-                      ),
-                      Text("Book Library Application",style: TextStyle(
-                        fontWeight: FontWeight.bold,fontSize: 22.0,color: Colors.blueAccent,
-
-                      )),
-                      const SizedBox(height: 20.0),
-                      emailField,
-                      const SizedBox(height: 20.0),
-                      passwordField,
-                      const SizedBox(height: 20.0),
-                      loginButton,
-                      const SizedBox(height: 20.0),
-                      forgetPassword,
-                      const SizedBox(height: 20.0),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Don't have an account?"),
-                          const SizedBox(width: 5.0),
-                          GestureDetector(
-                            child: const Text(
-                              "Sign Up",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.0,
-                                  decoration: TextDecoration.underline,
-                                  color: Colors.blue),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SignupScreen()));
-                            },
-                          )
-                        ],
-                      )
-                    ],
-                  )),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Container(
+              child: Padding(
+                padding: const EdgeInsets.all(40.0),
+                child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          child: Image.asset(
+                            "assets/images/booklogo.png",
+                            height: MediaQuery.of(context).size.height * 0.25,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                        Text("Book Library Application",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22.0,
+                              color: Colors.blueAccent,
+                            )),
+                        const SizedBox(height: 20.0),
+                        emailField,
+                        const SizedBox(height: 20.0),
+                        passwordField,
+                        const SizedBox(height: 20.0),
+                        loginButton,
+                        const SizedBox(height: 20.0),
+                        forgetPassword,
+                        const SizedBox(height: 20.0),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text("Don't have an account?"),
+                            const SizedBox(width: 5.0),
+                            GestureDetector(
+                              child: const Text(
+                                "Sign Up",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.0,
+                                    decoration: TextDecoration.underline,
+                                    color: Colors.blue),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SignupScreen()));
+                              },
+                            )
+                          ],
+                        )
+                      ],
+                    )),
+              ),
             ),
           ),
         ),
       ),
-    ),
     );
   }
 
