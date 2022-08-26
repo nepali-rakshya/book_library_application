@@ -123,11 +123,17 @@ class _SigninScreenState extends State<SigninScreen> {
       },
     );
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
+      body:Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bgimg.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+      child:Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
+            color: Color.fromARGB(100, 22, 44, 33),
             child: Padding(
               padding: const EdgeInsets.all(40.0),
               child: Form(
@@ -138,11 +144,15 @@ class _SigninScreenState extends State<SigninScreen> {
                     children: [
                       SizedBox(
                         child: Image.asset(
-                          "assets/images/—Pngtree—books logo_4135439.png",
-                          height: MediaQuery.of(context).size.height * 0.2,
+                          "assets/images/booklogo.png",
+                          height: MediaQuery.of(context).size.height * 0.35,
                           fit: BoxFit.contain,
-                        ),
+                        ), 
                       ),
+                      Text("Book Library Application",style: TextStyle(
+                        fontWeight: FontWeight.bold,fontSize: 20.0,color: Colors.blueAccent[700]
+
+                      )),
                       const SizedBox(height: 20.0),
                       emailField,
                       const SizedBox(height: 20.0),
@@ -183,6 +193,7 @@ class _SigninScreenState extends State<SigninScreen> {
           ),
         ),
       ),
+    ),
     );
   }
 
