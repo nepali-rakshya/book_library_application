@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +37,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      
+      backgroundColor: Colors.blue[100],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -52,26 +51,27 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        title: Text("Book Library", style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 23.0,
+                                  color: Colors.white),),
+        backgroundColor: Colors.blue[200],
         elevation: 0.0,
-        leading: Icon(
-          Icons.menu,
-          color: Colors.blue,
-        ),
         actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.notifications,
-              color: Colors.blue,
-            ),
-            onPressed: () {},
-          ),
           IconButton(
               onPressed: () {},
               icon: const Icon(Icons.logout, color: Colors.blue))
         ],
       ),
-      body: StreamBuilder(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bgimg.jpg"),
+            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.dstATop),
+            fit: BoxFit.cover,
+          ),
+        ),
+      child: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('users')
             .doc(loggedInUser.uid)
@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                         ListTile(
                           leading: CircleAvatar(
                               child: Image.asset(
-                                  "assets/images/—Pngtree—books logo_4135439.png")),
+                                  "assets/images/booklogo.png")),
                           iconColor: Colors.black,
                           title: Text(
                             document['title'],
@@ -184,6 +184,7 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
+    ),
     );
   }
 }

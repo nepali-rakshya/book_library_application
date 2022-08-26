@@ -40,7 +40,15 @@ class _SignupScreenState extends State<SignupScreen> {
           contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
           labelText: "First Name",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
+              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.grey,
+                    width: 2.0,
+                  ),
+                ),
+    ),
       autofocus: false,
       controller: firstNameEditingController,
       keyboardType: TextInputType.name,
@@ -71,7 +79,15 @@ class _SignupScreenState extends State<SignupScreen> {
           // hintText: "Enter your email address",
           labelText: "Second Name",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
+              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.grey,
+                    width: 2.0,
+                  ),
+                ),
+    ),
       autofocus: false,
       controller: secondNameEditingController,
       keyboardType: TextInputType.name,
@@ -95,7 +111,15 @@ class _SignupScreenState extends State<SignupScreen> {
           // hintText: "Enter your email address",
           labelText: "Email",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
+              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.grey,
+                    width: 2.0,
+                  ),
+                ),
+    ),
       autofocus: false,
       controller: emailEditingController,
       keyboardType: TextInputType.emailAddress,
@@ -122,7 +146,15 @@ class _SignupScreenState extends State<SignupScreen> {
           // hintText: "Enter your email address",
           labelText: "Password",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
+              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.grey,
+                    width: 2.0,
+                  ),
+                ),
+    ),
       autofocus: false,
       obscureText: true,
       controller: passwordEditingController,
@@ -149,7 +181,15 @@ class _SignupScreenState extends State<SignupScreen> {
           // hintText: "Enter your email address",
           labelText: "Confirm Password",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
+              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.grey,
+                    width: 2.0,
+                  ),
+                ),
+      ),
       autofocus: false,
       controller: confirmPasswordEditingController,
       obscureText: true,
@@ -185,24 +225,16 @@ class _SignupScreenState extends State<SignupScreen> {
     );
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.blue,
+      body:Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bgimg.jpg"),
+            fit: BoxFit.cover,
           ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
         ),
-      ),
-      body: Center(
+      child: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(40.0),
               child: Form(
@@ -213,7 +245,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     children: [
                       SizedBox(
                         child: Image.asset(
-                          "assets/images/—Pngtree—books logo_4135439.png",
+                          "assets/images/booklogo.png",
                           height: MediaQuery.of(context).size.height * 0.2,
                           fit: BoxFit.contain,
                         ),
@@ -261,6 +293,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
           ),
         ),
+      ),
       ),
     );
   }

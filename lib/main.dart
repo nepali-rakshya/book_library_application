@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       color: Colors.white,
       debugShowCheckedModeBanner: false,
-      title: 'Note Keeping App',
+      title: 'Book Library Application',
       home: Scaffold(
         body: StreamBuilder<User?>(
           stream: FirebaseAuth.instance.authStateChanges(),

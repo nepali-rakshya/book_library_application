@@ -42,7 +42,15 @@ class _SigninScreenState extends State<SigninScreen> {
           contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
           labelText: "Email",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
+              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+          enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.grey,
+                    width: 2.0,
+                  ),
+                ),
+      ),
       autofocus: false,
       controller: emailController,
       keyboardType: TextInputType.emailAddress,
@@ -69,7 +77,15 @@ class _SigninScreenState extends State<SigninScreen> {
           // hintText: "Enter your password",
           labelText: "Password",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
+              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+        enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.grey,
+                    width: 2.0,
+                  ),
+                ),
+      ),
       autofocus: false,
       controller: passwordController,
       obscureText: true,
@@ -92,7 +108,7 @@ class _SigninScreenState extends State<SigninScreen> {
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30.0),
-      color: Colors.green,
+      color: Colors.blueAccent[700],
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -112,7 +128,7 @@ class _SigninScreenState extends State<SigninScreen> {
         style: TextStyle(
             decoration: TextDecoration.underline,
             color: Colors.redAccent,
-            fontSize: 18.0,
+            fontSize: 15.0,
             fontWeight: FontWeight.bold),
       ),
       onTap: () {
@@ -133,7 +149,6 @@ class _SigninScreenState extends State<SigninScreen> {
       child:Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Color.fromARGB(100, 22, 44, 33),
             child: Padding(
               padding: const EdgeInsets.all(40.0),
               child: Form(
@@ -145,12 +160,12 @@ class _SigninScreenState extends State<SigninScreen> {
                       SizedBox(
                         child: Image.asset(
                           "assets/images/booklogo.png",
-                          height: MediaQuery.of(context).size.height * 0.35,
+                          height: MediaQuery.of(context).size.height * 0.25,
                           fit: BoxFit.contain,
                         ), 
                       ),
                       Text("Book Library Application",style: TextStyle(
-                        fontWeight: FontWeight.bold,fontSize: 20.0,color: Colors.blueAccent[700]
+                        fontWeight: FontWeight.bold,fontSize: 22.0,color: Colors.blueAccent,
 
                       )),
                       const SizedBox(height: 20.0),
@@ -173,7 +188,7 @@ class _SigninScreenState extends State<SigninScreen> {
                               "Sign Up",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 18.0,
+                                  fontSize: 15.0,
                                   decoration: TextDecoration.underline,
                                   color: Colors.blue),
                             ),
