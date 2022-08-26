@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: Card(
                     elevation: 5.0,
-                    color: Colors.red[200],
+                    color: Colors.red[100],
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
