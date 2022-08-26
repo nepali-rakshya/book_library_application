@@ -88,9 +88,9 @@ class _UpdatetasksState extends State<Updatebooks> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue[100],
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue[200],
         elevation: 0.0,
         title: Text(
           'Update Books',
@@ -118,7 +118,7 @@ class _UpdatetasksState extends State<Updatebooks> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     labelText: 'Book title',
-                    hintText: 'Enter title of the book........'),
+                    hintText: 'Enter title of the book'),
               ),
               SizedBox(height: 20.0),
               TextField(
@@ -129,21 +129,9 @@ class _UpdatetasksState extends State<Updatebooks> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     labelText: 'Enter Summary',
-                    hintText: 'Enter summary of the book........'),
+                    hintText: 'Enter summary of the book'),
               ),
               SizedBox(height: 20.0),
-              // TextField(
-              // controller: _dateController,
-              // decoration: InputDecoration(
-              //     border: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(10),
-              //     ),
-              //     labelText: 'Enter Modify Date',
-              //     hintText: 'Enter modify date of your note........'),
-              // onTap: () {
-              //   _selectDate(context);
-              // },
-              // ),
               SizedBox(height: 20.0),
               TextField(
                 controller: _timeController,
@@ -152,7 +140,7 @@ class _UpdatetasksState extends State<Updatebooks> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     labelText: 'Enter the Updated Time',
-                    hintText: 'Enter the modified time of the book........'),
+                    hintText: 'Enter the modified time of the book'),
                 onTap: () {
                   _selectTime(context);
                 },
