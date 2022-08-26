@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 import 'package:intl/intl.dart';
 
-class AddNotes extends StatefulWidget {
-  String? userId;
+class AddBooks extends StatefulWidget {
+  String? bookId;
 
-  AddNotes({key: Key, required this.userId});
+  AddBooks({key: Key, required this.bookId});
 
   @override
-  State<AddNotes> createState() => _AddNotesState();
+  State<AddBooks> createState() => _AddBooksState();
 }
 
-class _AddNotesState extends State<AddNotes> {
+class _AddBooksState extends State<AddBooks> {
   String? _setTime, _setDate;
 
   String? _hour, _minute, _time;
@@ -25,7 +25,7 @@ class _AddNotesState extends State<AddNotes> {
 
   TimeOfDay selectedTime = TimeOfDay(hour: 00, minute: 00);
   final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _detailController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _timeController = TextEditingController();
 
@@ -113,13 +113,13 @@ class _AddNotesState extends State<AddNotes> {
               SizedBox(height: 20.0),
               TextField(
                 textInputAction: TextInputAction.next,
-                controller: _descriptionController,
+                controller: _detailController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    labelText: 'Enter Description',
-                    hintText: 'Enter description of your note........'),
+                    labelText: 'Enter detail',
+                    hintText: 'Enter detail of your note........'),
               ),
               SizedBox(height: 20.0),
               TextField(
@@ -151,18 +151,18 @@ class _AddNotesState extends State<AddNotes> {
               RaisedButton(
                 onPressed: () {
                   postNotes(
-                      widget.userId,
+                      widget.bookId,
                       _titleController.text,
-                      _descriptionController.text,
+                      _detailController.text,
                       _dateController.text,
                       _timeController.text);
                   Navigator.pop(context, {
                     'title': _titleController.text,
-                    'description': _descriptionController.text,
+                    'detail': _detailController.text,
                     'date': _dateController.text,
                   });
                   print(
-                      "${_titleController.text}\n${_descriptionController.text}\n${_dateController.text}\n${_timeController.text}\n${widget.userId}");
+                      "${_titleController.text}\n${_detailController.text}\n${_dateController.text}\n${_timeController.text}\n${widget.bookId}");
                   getDocumentID();
                   print("================");
                 },
@@ -175,16 +175,16 @@ class _AddNotesState extends State<AddNotes> {
     );
   }
 
-  postNotes(userId, title, description, date, time) {
+  postNotes(bookId, title, detail, date, time) {
     FirebaseFirestore.instance
         .collection('users')
-        .doc(userId)
+        .doc(bookId)
         .collection('notes')
         .add({
       'title': title,
-      'description': description,
-      'createdDate': date,
-      'createdTime': time,
+      'detail': detail,
+      'publishedDate': date,
+      'publishedTime': time,
       'updatedDate': date,
       'updatedTime': time,
     });
@@ -193,7 +193,7 @@ class _AddNotesState extends State<AddNotes> {
   getDocumentID() {
     FirebaseFirestore.instance
         .collection('users')
-        .doc(widget.userId)
+        .doc(widget.bookId)
         .collection('notes')
         .get()
         .then((value) {

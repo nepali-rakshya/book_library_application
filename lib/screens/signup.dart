@@ -355,22 +355,10 @@ class _SignupScreenState extends State<SignupScreen> {
             actions: [
               IconButton(
                   onPressed: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => ImageUpload(
-                    //               userId: userModel.uid,
-                    //             )));
                   },
                   icon: const Icon(Icons.exit_to_app))
             ],
           );
         });
-    // Fluttertoast.showToast(msg: "Account created successfully");
-
-    // Navigator.pushAndRemoveUntil(
-    //     (context),
-    //     MaterialPageRoute(builder: (context) => const BottomNavScreen()),
-    //     (route) => false);
   }
 }

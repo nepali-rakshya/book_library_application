@@ -3,13 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:book_application/models/user_model.dart';
 import 'package:book_application/screens/notedescription.dart';
-import 'package:book_application/screens/updateNotes.dart';
+import 'package:book_application/screens/updateBooks.dart';
 import '../libraries.dart';
 
 class HomePage extends StatefulWidget {
-  final String? userId;
-  final String? noteId;
-  const HomePage({Key? key, this.userId, this.noteId}) : super(key: key);
+  final String? bookId;
+  final String? descId;
+  const HomePage({Key? key, this.bookId, this.descId}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AddNotes(userId: loggedInUser.uid),
+              builder: (context) => AddBooks(bookId: loggedInUser.uid),
             ),
           );
         },
@@ -64,14 +64,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/bgimg.jpg"),
-            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.dstATop),
-            fit: BoxFit.cover,
-          ),
-        ),
-      child: StreamBuilder(
+        child: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('users')
             .doc(loggedInUser.uid)
@@ -86,7 +79,7 @@ class _HomePageState extends State<HomePage> {
             );
           }
           return Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(0.0),
             child: ListView(
               children: snapshot.data!.docs.map((document) {
                 return GestureDetector(
@@ -94,16 +87,16 @@ class _HomePageState extends State<HomePage> {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: ((context) {
                       return NoteDescription(
-                        userId: loggedInUser.uid!,
+                        bookId: loggedInUser.uid!,
                         title: document['title'],
-                        description: document['description'],
-                        createdDate: document['createdDate'],
-                        createdTime: document['createdTime'],
+                        detail: document['detail'],
+                        publishedDate: document['publishedDate'],
+                        publishedTime: document['publishedTime'],
                       );
                     })));
                   },
                   child: Card(
-                    elevation: 5.0,
+                    elevation: 0.0,
                     color: Colors.white,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -119,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.black, fontSize: 30.0),
                           ),
                           subtitle: Text(
-                            document['description'],
+                            document['detail'],
                             style: TextStyle(
                                 fontSize: 20.0, color: Colors.grey[700]),
                           ),
@@ -138,16 +131,16 @@ class _HomePageState extends State<HomePage> {
                                     onPressed: () {
                                       Navigator.of(context)
                                           .push(MaterialPageRoute(
-                                              builder: (context) => UpdateNotes(
-                                                    userId: loggedInUser.uid,
-                                                    noteId: document.id,
+                                              builder: (context) => UpdateBooks(
+                                                    bookId: loggedInUser.uid,
+                                                    descId: document.id,
                                                     title: document['title'],
-                                                    description:
-                                                        document['description'],
-                                                    createdDate:
-                                                        document['createdDate'],
-                                                    createdTime:
-                                                        document['createdTime'],
+                                                    detail:
+                                                        document['detail'],
+                                                    publishedDate:
+                                                        document['publishedDate'],
+                                                    publishedTime:
+                                                        document['publishedTime'],
                                                   )));
                                     },
                                     child: Icon(
