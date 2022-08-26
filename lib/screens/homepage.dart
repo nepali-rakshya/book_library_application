@@ -1,15 +1,19 @@
+// ignore_for_file: prefer_const_constructors, deprecated_member_use, unnecessary_brace_in_string_interps, avoid_print, unused_field
+
+import 'package:book_application/models/user_model.dart';
+import 'package:book_application/screens/notedescription.dart';
+import 'package:book_application/screens/updateNotes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:book_application/models/user_model.dart';
 import 'package:book_application/screens/notedescription.dart';
-import 'package:book_application/screens/updateBooks.dart';
+import 'package:book_application/screens/updateNotes.dart';
 import '../libraries.dart';
 
 class HomePage extends StatefulWidget {
-  final String? bookId;
-  final String? descId;
-  const HomePage({Key? key, this.bookId, this.descId}) : super(key: key);
+  final String? userId;
+  final String? noteId;
+  const HomePage({Key? key, this.userId, this.noteId}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -37,34 +41,44 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       backgroundColor: Colors.blue[100],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AddBooks(bookId: loggedInUser.uid),
+              builder: (context) => AddNotes(userId: loggedInUser.uid),
             ),
           );
         },
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
-        title: Text("Book Library", style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 23.0,
-                                  color: Colors.white),),
+        title: Text(
+          "Book Library",
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 23.0, color: Colors.white),
+        ),
         backgroundColor: Colors.blue[200],
         elevation: 0.0,
+        leading: Icon(
+          Icons.menu,
+          color: Colors.blue,
+        ),
         actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.notifications,
+              color: Colors.blue,
+            ),
+            onPressed: () {},
+          ),
           IconButton(
               onPressed: () {},
               icon: const Icon(Icons.logout, color: Colors.blue))
         ],
       ),
-      body: Container(
-        child: StreamBuilder(
+      body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('users')
             .doc(loggedInUser.uid)
@@ -79,7 +93,7 @@ class _HomePageState extends State<HomePage> {
             );
           }
           return Padding(
-            padding: const EdgeInsets.all(0.0),
+            padding: const EdgeInsets.all(16.0),
             child: ListView(
               children: snapshot.data!.docs.map((document) {
                 return GestureDetector(
@@ -87,16 +101,16 @@ class _HomePageState extends State<HomePage> {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: ((context) {
                       return NoteDescription(
-                        bookId: loggedInUser.uid!,
+                        userId: loggedInUser.uid!,
                         title: document['title'],
-                        detail: document['detail'],
-                        publishedDate: document['publishedDate'],
-                        publishedTime: document['publishedTime'],
+                        description: document['description'],
+                        createdDate: document['createdDate'],
+                        createdTime: document['createdTime'],
                       );
                     })));
                   },
                   child: Card(
-                    elevation: 0.0,
+                    elevation: 5.0,
                     color: Colors.white,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                         ListTile(
                           leading: CircleAvatar(
                               child: Image.asset(
-                                  "assets/images/booklogo.png")),
+                                  "assets/images/sikshyatechnology.jpg")),
                           iconColor: Colors.black,
                           title: Text(
                             document['title'],
@@ -112,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.black, fontSize: 30.0),
                           ),
                           subtitle: Text(
-                            document['detail'],
+                            document['description'],
                             style: TextStyle(
                                 fontSize: 20.0, color: Colors.grey[700]),
                           ),
@@ -131,16 +145,16 @@ class _HomePageState extends State<HomePage> {
                                     onPressed: () {
                                       Navigator.of(context)
                                           .push(MaterialPageRoute(
-                                              builder: (context) => UpdateBooks(
-                                                    bookId: loggedInUser.uid,
-                                                    descId: document.id,
+                                              builder: (context) => UpdateNotes(
+                                                    userId: loggedInUser.uid,
+                                                    noteId: document.id,
                                                     title: document['title'],
-                                                    detail:
-                                                        document['detail'],
-                                                    publishedDate:
-                                                        document['publishedDate'],
-                                                    publishedTime:
-                                                        document['publishedTime'],
+                                                    description:
+                                                        document['description'],
+                                                    createdDate:
+                                                        document['createdDate'],
+                                                    createdTime:
+                                                        document['createdTime'],
                                                   )));
                                     },
                                     child: Icon(
@@ -177,7 +191,6 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
-    ),
     );
   }
 }

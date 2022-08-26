@@ -1,20 +1,18 @@
-// ignore_for_file: prefer_const_constructors, deprecated_member_use, unnecessary_brace_in_string_interps, avoid_print, unused_field
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 import 'package:intl/intl.dart';
 
-class AddBooks extends StatefulWidget {
-  String? bookId;
+class AddNotes extends StatefulWidget {
+  String? userId;
 
-  AddBooks({key: Key, required this.bookId});
+  AddNotes({key: Key, required this.userId});
 
   @override
-  State<AddBooks> createState() => _AddBooksState();
+  State<AddNotes> createState() => _AddNotesState();
 }
 
-class _AddBooksState extends State<AddBooks> {
+class _AddNotesState extends State<AddNotes> {
   String? _setTime, _setDate;
 
   String? _hour, _minute, _time;
@@ -25,7 +23,7 @@ class _AddBooksState extends State<AddBooks> {
 
   TimeOfDay selectedTime = TimeOfDay(hour: 00, minute: 00);
   final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _detailController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _timeController = TextEditingController();
 
@@ -113,13 +111,13 @@ class _AddBooksState extends State<AddBooks> {
               SizedBox(height: 20.0),
               TextField(
                 textInputAction: TextInputAction.next,
-                controller: _detailController,
+                controller: _descriptionController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    labelText: 'Enter detail',
-                    hintText: 'Enter detail of your note........'),
+                    labelText: 'Enter Description',
+                    hintText: 'Enter description of your note........'),
               ),
               SizedBox(height: 20.0),
               TextField(
@@ -151,18 +149,18 @@ class _AddBooksState extends State<AddBooks> {
               RaisedButton(
                 onPressed: () {
                   postNotes(
-                      widget.bookId,
+                      widget.userId,
                       _titleController.text,
-                      _detailController.text,
+                      _descriptionController.text,
                       _dateController.text,
                       _timeController.text);
                   Navigator.pop(context, {
                     'title': _titleController.text,
-                    'detail': _detailController.text,
+                    'description': _descriptionController.text,
                     'date': _dateController.text,
                   });
                   print(
-                      "${_titleController.text}\n${_detailController.text}\n${_dateController.text}\n${_timeController.text}\n${widget.bookId}");
+                      "${_titleController.text}\n${_descriptionController.text}\n${_dateController.text}\n${_timeController.text}\n${widget.userId}");
                   getDocumentID();
                   print("================");
                 },
@@ -175,16 +173,16 @@ class _AddBooksState extends State<AddBooks> {
     );
   }
 
-  postNotes(bookId, title, detail, date, time) {
+  postNotes(userId, title, description, date, time) {
     FirebaseFirestore.instance
         .collection('users')
-        .doc(bookId)
+        .doc(userId)
         .collection('notes')
         .add({
       'title': title,
-      'detail': detail,
-      'publishedDate': date,
-      'publishedTime': time,
+      'description': description,
+      'createdDate': date,
+      'createdTime': time,
       'updatedDate': date,
       'updatedTime': time,
     });
@@ -193,7 +191,7 @@ class _AddBooksState extends State<AddBooks> {
   getDocumentID() {
     FirebaseFirestore.instance
         .collection('users')
-        .doc(widget.bookId)
+        .doc(widget.userId)
         .collection('notes')
         .get()
         .then((value) {

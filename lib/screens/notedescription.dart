@@ -2,18 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class NoteDescription extends StatefulWidget {
-  String bookId;
+  String userId;
   String title;
-  String detail;
-  String publishedDate;
-  String publishedTime;
+  String description;
+  String createdDate;
+  String createdTime;
   NoteDescription({
     Key? key,
-    required this.bookId,
+    required this.userId,
     required this.title,
-    required this.detail,
-    required this.publishedDate,
-    required this.publishedTime,
+    required this.description,
+    required this.createdDate,
+    required this.createdTime,
   }) : super(key: key);
 
   @override
@@ -47,13 +47,13 @@ class _NoteDescriptionState extends State<NoteDescription> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              widget.detail,
+              widget.description,
               style: TextStyle(fontSize: 20.0),
             ),
             SizedBox(height: 10.0),
             Divider(color: Colors.black, height: 3.0),
             SizedBox(height: 10.0),
-            Text("${widget.publishedTime} | ${widget.publishedTime}"),
+            Text("${widget.createdTime} | ${widget.createdTime}"),
             SizedBox(height: 10.0),
           ],
         ),

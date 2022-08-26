@@ -1,2 +1,2 @@
 export 'screens/homepage.dart';
-export 'screens/addbooks.dart';
+export 'screens/addnotes.dart';

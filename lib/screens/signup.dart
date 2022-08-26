@@ -35,20 +35,19 @@ class _SignupScreenState extends State<SignupScreen> {
         FilteringTextInputFormatter.deny(RegExp(r"^[0-9]"))
       ],
       decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.person_rounded),
-          prefixIconColor: Colors.red,
-          contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
-          labelText: "First Name",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                ),
-    ),
+        prefixIcon: const Icon(Icons.person_rounded),
+        prefixIconColor: Colors.red,
+        contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+        labelText: "First Name",
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.0),
+          borderSide: BorderSide(
+            color: Colors.grey,
+            width: 2.0,
+          ),
+        ),
+      ),
       autofocus: false,
       controller: firstNameEditingController,
       keyboardType: TextInputType.name,
@@ -73,21 +72,20 @@ class _SignupScreenState extends State<SignupScreen> {
         FilteringTextInputFormatter.deny(RegExp(r"^[0-9]"))
       ],
       decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.person_rounded),
-          prefixIconColor: Colors.red,
-          contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
-          // hintText: "Enter your email address",
-          labelText: "Second Name",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                ),
-    ),
+        prefixIcon: const Icon(Icons.person_rounded),
+        prefixIconColor: Colors.red,
+        contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+        // hintText: "Enter your email address",
+        labelText: "Second Name",
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.0),
+          borderSide: BorderSide(
+            color: Colors.grey,
+            width: 2.0,
+          ),
+        ),
+      ),
       autofocus: false,
       controller: secondNameEditingController,
       keyboardType: TextInputType.name,
@@ -105,21 +103,20 @@ class _SignupScreenState extends State<SignupScreen> {
     // email field
     final emailField = TextFormField(
       decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.email),
-          prefixIconColor: Colors.red,
-          contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
-          // hintText: "Enter your email address",
-          labelText: "Email",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                ),
-    ),
+        prefixIcon: const Icon(Icons.email),
+        prefixIconColor: Colors.red,
+        contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+        // hintText: "Enter your email address",
+        labelText: "Email",
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.0),
+          borderSide: BorderSide(
+            color: Colors.grey,
+            width: 2.0,
+          ),
+        ),
+      ),
       autofocus: false,
       controller: emailEditingController,
       keyboardType: TextInputType.emailAddress,
@@ -140,21 +137,20 @@ class _SignupScreenState extends State<SignupScreen> {
     // password field
     final passwordField = TextFormField(
       decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.vpn_key),
-          prefixIconColor: Colors.red,
-          contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
-          // hintText: "Enter your email address",
-          labelText: "Password",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                ),
-    ),
+        prefixIcon: const Icon(Icons.vpn_key),
+        prefixIconColor: Colors.red,
+        contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+        // hintText: "Enter your email address",
+        labelText: "Password",
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.0),
+          borderSide: BorderSide(
+            color: Colors.grey,
+            width: 2.0,
+          ),
+        ),
+      ),
       autofocus: false,
       obscureText: true,
       controller: passwordEditingController,
@@ -175,20 +171,19 @@ class _SignupScreenState extends State<SignupScreen> {
     // confirm password field
     final confirmPasswordField = TextFormField(
       decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.vpn_key),
-          prefixIconColor: Colors.red,
-          contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
-          // hintText: "Enter your email address",
-          labelText: "Confirm Password",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                ),
+        prefixIcon: const Icon(Icons.vpn_key),
+        prefixIconColor: Colors.red,
+        contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+        // hintText: "Enter your email address",
+        labelText: "Confirm Password",
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.0),
+          borderSide: BorderSide(
+            color: Colors.grey,
+            width: 2.0,
+          ),
+        ),
       ),
       autofocus: false,
       controller: confirmPasswordEditingController,
@@ -225,75 +220,75 @@ class _SignupScreenState extends State<SignupScreen> {
     );
 
     return Scaffold(
-      body:Container(
+      body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/bgimg.jpg"),
             fit: BoxFit.cover,
           ),
         ),
-      child: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            child: Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        child: Image.asset(
-                          "assets/images/booklogo.png",
-                          height: MediaQuery.of(context).size.height * 0.2,
-                          fit: BoxFit.contain,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Container(
+              child: Padding(
+                padding: const EdgeInsets.all(40.0),
+                child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          child: Image.asset(
+                            "assets/images/booklogo.png",
+                            height: MediaQuery.of(context).size.height * 0.2,
+                            fit: BoxFit.contain,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 20.0),
-                      firstNameField,
-                      const SizedBox(height: 20.0),
-                      secondNameField,
-                      const SizedBox(height: 20.0),
-                      emailField,
-                      const SizedBox(height: 20.0),
-                      passwordField,
-                      const SizedBox(height: 20.0),
-                      confirmPasswordField,
-                      const SizedBox(height: 20.0),
-                      signupButton,
-                      const SizedBox(height: 20.0),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Already have an account?"),
-                          const SizedBox(width: 5.0),
-                          GestureDetector(
-                            child: const Text(
-                              "Sign In",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18.0,
-                                  decoration: TextDecoration.underline,
-                                  color: Colors.blue),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SigninScreen()));
-                            },
-                          )
-                        ],
-                      )
-                    ],
-                  )),
+                        const SizedBox(height: 20.0),
+                        firstNameField,
+                        const SizedBox(height: 20.0),
+                        secondNameField,
+                        const SizedBox(height: 20.0),
+                        emailField,
+                        const SizedBox(height: 20.0),
+                        passwordField,
+                        const SizedBox(height: 20.0),
+                        confirmPasswordField,
+                        const SizedBox(height: 20.0),
+                        signupButton,
+                        const SizedBox(height: 20.0),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text("Already have an account?"),
+                            const SizedBox(width: 5.0),
+                            GestureDetector(
+                              child: const Text(
+                                "Sign In",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.0,
+                                    decoration: TextDecoration.underline,
+                                    color: Colors.blue),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SigninScreen()));
+                              },
+                            )
+                          ],
+                        )
+                      ],
+                    )),
+              ),
             ),
           ),
         ),
-      ),
       ),
     );
   }
@@ -353,10 +348,7 @@ class _SignupScreenState extends State<SignupScreen> {
             content: const Text("Account created successfully"),
             backgroundColor: Colors.green,
             actions: [
-              IconButton(
-                  onPressed: () {
-                  },
-                  icon: const Icon(Icons.exit_to_app))
+              IconButton(onPressed: () {}, icon: const Icon(Icons.exit_to_app))
             ],
           );
         });
