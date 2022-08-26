@@ -76,12 +76,15 @@ class _AddBookState extends State<AddBook> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue[100],
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue[200],
         elevation: 0.0,
-        title: Text('Add Book',
-            style: TextStyle(color: Colors.black, fontSize: 25.0)),
+        title: Text(
+          'Add Book',
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.0),
+        ),
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pop();
@@ -108,7 +111,7 @@ class _AddBookState extends State<AddBook> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     labelText: 'Book title',
-                    hintText: 'Enter title of the book........'),
+                    hintText: 'Enter title of the book'),
               ),
               SizedBox(height: 20.0),
               TextField(
@@ -119,7 +122,7 @@ class _AddBookState extends State<AddBook> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     labelText: 'Enter Summary',
-                    hintText: 'Enter summary of the book........'),
+                    hintText: 'Enter summary of the book'),
               ),
               SizedBox(height: 20.0),
               TextField(
@@ -129,24 +132,11 @@ class _AddBookState extends State<AddBook> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     labelText: 'Enter Date',
-                    hintText: 'Enter date of your book........'),
+                    hintText: 'Enter date of your book'),
                 onTap: () {
                   _selectDate(context);
                 },
               ),
-              // SizedBox(height: 20.0),
-              // TextField(
-              //   controller: _timeController,
-              //   decoration: InputDecoration(
-              //       border: OutlineInputBorder(
-              //         borderRadius: BorderRadius.circular(10),
-              //       ),
-              //       labelText: 'Enter Time',
-              //       hintText: 'Enter time of your note........'),
-              //   onTap: () {
-              //     _selectTime(context);
-              //   },
-              // ),
               SizedBox(height: 20.0),
               RaisedButton(
                 onPressed: () {

@@ -56,26 +56,10 @@ class _HomePageState extends State<HomePage> {
         title: Text(
           "Book Library",
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 23.0, color: Colors.white),
+              fontWeight: FontWeight.bold, fontSize: 25.0, color: Colors.white),
         ),
         backgroundColor: Colors.blue[200],
         elevation: 0.0,
-        leading: Icon(
-          Icons.menu,
-          color: Colors.blue,
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.notifications,
-              color: Colors.blue,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.logout, color: Colors.blue))
-        ],
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
@@ -110,14 +94,13 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: Card(
                     elevation: 5.0,
-                    color: Colors.white,
+                    color: Colors.red[200],
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         ListTile(
                           leading: CircleAvatar(
-                              child: Image.asset(
-                                  "assets/images/sikshyatechnology.jpg")),
+                              child: Image.asset("assets/images/booklogo.png")),
                           iconColor: Colors.black,
                           title: Text(
                             document['title'],
@@ -192,12 +175,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
-
-Future<void> logout(BuildContext context) async {
-  await FirebaseAuth.instance.signOut();
-  Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (BuildContext context) => SigninScreen()),
-      (route) => false);
 }

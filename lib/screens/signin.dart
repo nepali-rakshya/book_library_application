@@ -129,12 +129,7 @@ class _SigninScreenState extends State<SigninScreen> {
             fontSize: 15.0,
             fontWeight: FontWeight.bold),
       ),
-      onTap: () {
-        // Navigator.pushReplacement(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) => const ForgetPasswordPage()));
-      },
+      onTap: () {},
     );
     return Scaffold(
       body: Container(
